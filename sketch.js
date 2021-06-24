@@ -90,6 +90,9 @@ function to_width_string(width_input){
 }
 
 function draw_update() {
+  my_width = min(my_width_desired, windowWidth);
+  my_width = min(my_width, displayWidth);
+  
   controller = new PID(slider_p.value()/100.0,
                        slider_i.value()/100.0,
                        slider_d.value()/100.0,
@@ -184,7 +187,7 @@ function setup(){
   slider_d_text.style('font-size', '18px');
 
   
-  frameRate(30);
+  frameRate(10);
   
   
   draw_update();
@@ -201,6 +204,5 @@ function draw() {
 
 function windowResized() {
   //console.log(windowWidth);
-  my_width = min(my_width_desired, windowWidth);
   draw_update();
 }
